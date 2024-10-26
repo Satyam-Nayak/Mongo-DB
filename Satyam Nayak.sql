@@ -194,3 +194,5 @@ Diwali> db.crackers.insertOne({name: 'Nodia Bomb', price: 50, brand: 'Satyam Fir
 Diwali> db.createCollection('crackers')
 { ok: 1 }
 Diwali>
+
+Assignment 1 by sreenivansan sir
