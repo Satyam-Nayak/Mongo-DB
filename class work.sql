@@ -6,7 +6,6 @@ db.emp.find({ job: { $eq: "analyst" } }, { ename: 1, _id: 0 })
 db.emp.find({ hiredate: { $gt: new Date("1981-12-31") } }, { ename: 1, _id: 0 })
 db.dept.find({ loc: { $eq: "dallas" } }, { dname: 1, _id: 0 })
 db.dept.find({ deptno: { $eq: 30 } }, { loc: 1, _id: 0 })
-db.dept.find({ deptno: { $ne: 40 } })
 
 -- 1. List all employees whose commission is `null`.
 -- 2. List all employees who don't have a reporting manager (`mgr` is `null`).
