@@ -23,7 +23,7 @@ db.emp.find({ comm: { $type: "null" } }, { ename: 1, mgr: 1, comm:1 })
 db.emp.find({ hiredate: { $type: "date" } })
 
 -- Q9: Write a query to display all details of employees whose `deptno` contains the values `[10, 20]` exactly.
--- db.emp.find({ deptno: [10, 20] }) doubt? ?
+db.emp.find({deptno:{$in:[10, 20]}})
 
 -- Q10: Write a query to display all employee details for those who have at least one skill of either "java" or "html".
 db.emp.find({ skills: { $in: ["java", "html"] } })
@@ -50,10 +50,10 @@ db.emp.find({ quantities: { $size: { $lt: 3 } } })
 db.emp.find({ comm: { $elemMatch: { amount: { $gt: 500 }, status: "paid" } } }, { ename: 1, sal: 1 })
 
 -- Q18: Write a query to display employee details where the `mgr` field is absent.
-db.emp.find({ mgr: { $exists: false } })
+db.emp.find({ mgr: null})
 
 -- Q19: Write a query to display employee details for those not earning any comm.
-db.emp.find({ comm: { $exists: false } })
+db.emp.find({$or: [{comm:0},{comm:null}]})
 
 -- Q20: Explain the difference between SQL and NoSQL.
 -- SQL is a relational database, structured in tables with rows and columns, supporting structured data and transactions.
