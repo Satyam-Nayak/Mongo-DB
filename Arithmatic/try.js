@@ -39,3 +39,7 @@ db.employees.find({$and:[{empno:{$mod:[2,0]}},{mgr:{$mod:[2,0]}},{deptno:{$mod:[
 
 db.emp.find({}, {_id:0,ename: 1,year_of_EXP: {$subtract: [{ $year: new Date() }, { $year: "$hiredate" } ]}});
 db.emp.find({},{ename:1, _id:0, year_of_exp:{$floor:{$divide:[{$subtract:[new Date(),"$hiredate"]},1000*60*60*24*365]}}})
+
+
+// Extra // WAQTD the ename and total year of experiance with their jobs name of the employee from the EMP 
+db.EMP.find({}, {ename: 1, job: 1, years_of_experience: 1, _id: 0})
