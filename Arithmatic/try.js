@@ -42,4 +42,4 @@ db.emp.find({},{ename:1, _id:0, year_of_exp:{$floor:{$divide:[{$subtract:[new Da
 
 
 // Extra // WAQTD the ename and total year of experiance with their jobs name of the employee from the EMP 
-db.EMP.find({}, {ename: 1, job: 1, years_of_experience: 1, _id: 0})
+db.emp.aggregate([{$project:{ename:1,job:1,_id:0,year_of_exp:{$floor:{$divide:[{$subtract:[new Date(),"$hiredate"]},1000*60*60*24*365]}}}},{$sort:{ename:1, job:1}}])
