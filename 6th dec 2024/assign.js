@@ -215,3 +215,6 @@ db.createCollection('trainerDetails',{
         }
     }
  })
+
+
+ new collections in mongo db
