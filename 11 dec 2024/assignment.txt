@@ -1,0 +1,29 @@
+1. Write a query to update salary of ward to 3000 
+ans. db.emp.updateOne({ ename: "ward" }, { $set: { sal: 3000 } });
+
+2. Write a query to delete comm field from Allen document 
+ans. db.emp.updateOne({ ename: "allen" }, { $unset: { comm: "" } });
+
+3. Write a query to update hiredate field to joining date of all documents.
+ans. db.emp.updateMany({}, { $rename: { hiredate: "joining_date" } });
+
+4. Write a query to update the sal of King to 4 times of his present sal.
+ans. db.emp.updateOne({ ename: "king" }, { $mul: { sal: 4 } });
+
+5. Write a query to update Smith's  sal to 600 by using $min operator.
+ans. db.emp.updateOne({ ename: "smith" }, { $min: { sal: 600 } });
+
+6. Write a query to update Martin document to minimum salary of 300.
+ans. db.emp.updateOne({ ename: "martin" }, { $min: { sal: 300 } });
+
+7. Write a query to update the sal of Turner to max sal of 3999.
+ans. db.emp.updateOne({ ename: "turner" }, { $max: { sal: 3999 } });
+
+8. Write a query to add bonus of 999 to the Adams sal.
+ans. db.emp.updateOne({ ename: "adams" }, { $inc: { sal: 999 } });
+
+9. Write a query to update the sal of Miller to 0.
+ans. db.emp.updateOne({ ename: "miller" }, { $set: { sal: 0 } });
+
+10. Write a query to display the first document of the collection.
+ans. db.emp.findOne()
