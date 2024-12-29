@@ -45,3 +45,30 @@ db.emp.aggregate([{ $match: { job: { $ne: "president" } } }, { $group: { _id: "$
 
 // 16. WAQTD total salary needed to pay all the employees in each job.
 db.emp.aggregate([{ $group: { _id: "$job", totalSal: { $sum: "$sal" } } }])
+
+// 17. WAQTD max salary and jib without repetation of all the emp in each deptno.
+// 18. WAQTD deptno and average sal of each deptno except deptno 20.
+// 19. WAQTD no of emp for each job.
+// 20. WAQTD maximum sal of all the emp of each designation(job).
+// 21. WAQTD no of emp working as manager in each deptno.
+// 22. WAQTD no of emp getting commision(comm) in each deptno.
+
+// 17. WAQTD max salary and job without repetition of all the emp in each deptno.
+db.emp.aggregate([{ $group: { _id: "$deptno", maxSalary: { $max: "$sal" }, job: { $first: "$job" } } }])
+
+// 18. WAQTD deptno and average sal of each deptno except deptno 20.
+db.emp.aggregate([{ $match: { deptno: { $ne: 20 } } }, { $group: { _id: "$deptno", avgSal: { $avg: "$sal" } } }])
+
+// 19. WAQTD no of emp for each job.
+db.emp.aggregate([{ $group: { _id: "$job", count: { $sum: 1 } } }])
+EMP1> db.emp.aggregate([{ $group: { _id: "$job", count: { $count: {} } } }])
+
+// 20. WAQTD maximum sal of all the emp of each designation(job).
+db.emp.aggregate([{ $group: { _id: "$job", maxSalary: { $max: "$sal" } } }])
+
+// 21. WAQTD no of emp working as manager in each deptno.
+db.emp.aggregate([{ $match: { job: "manager" } }, { $group: { _id: "$deptno", count: { $sum: 1 } } }])
+
+// 22. WAQTD no of emp getting commission(comm) in each deptno.
+db.emp.aggregate([{ $match: { comm: { $gt: 0 } } }, { $group: { _id: "$deptno", count: { $sum: 1 } } }])
+
